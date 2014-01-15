@@ -1,0 +1,67 @@
+SINATRA
+1. What is Sinatra? Where does it run?
+Sinatra is a microframework for Ruby. I'm afraid I'm not quite sure what you mean by where does it run -- do you mean where do we run the Sinatra app from (config.ru)? Or did you mean something like "Sinatra runs on the server"?
+
+2. What is a Gemfile? How do you use it in your Sinatra Application? Give step by step instructions.
+A Gemfile is a list of the gems used in an application.
+In your Sinatra application:
+- Create a Gemfile in the home folder
+- Add the source ("https://rubygems.org")
+- Add your gems (e.g. gem "sinatra")
+- Run bundle install
+- Require the gems in your app (I usually use require 'bundler'/Bundler.require)
+
+3. What is an ORM? What are the basic features of an ORM? Why is it helpful?
+An ORM is an Object-Relational Mapper. It creates an interface between your relational database and your program (or the language you write it in) by converting database entries into objects that you can use within the program.
+
+ORMs usually allow you to connect to your database and retrieve and update entries without ever having to write any SQL, and convert those entries into objects that your program can use by instantiating instances of classes (like User) and translating those instances and their attributes back to SQL and into the database when saved or updated.
+
+For example, with ActiveRecord (and a number of other ORMs) I can write User.all, and instead of having to construct a bunch of SQL and dealing with the raw data it returns, I have an array of user objects that I can iterate through. Then, instead of writing more SQL, I can say User.first.save (after editing); this object and its attributes are translated back into SQL, which is sent to the database to update the raw entry.
+
+4. What is the public folder? What do we use it for?
+The public folder is where you put your static (as opposed to dynamic) pages and assets, like images, javascript files, and CSS files.
+
+5. What is REST? Why is it useful?
+REST: Representational State Transfer. It models an interface for database transformations that is closely related to HTTP verbs like GET, POST, PUT and DELETE. I'm really bad at describing this. It allows a webpage/request + url to be representative of data transformation/action. It allows the data transformation interface to be much more intuitive, so you get to access resources using URLs.For example, GET /spacecat/1 gives you the first spacecat in the database; POST /spacecats creates a new spacecat; PUT /spacecats/1 updates its record in the database; and DELETE /spacecat/1 removes it from the database.
+
+I think...?
+
+6. Suppose I, with my browser, send an HTTP get request to the route that will render the view of all the SpaceCats. Walk me through step by step how your application handles that request.
+- app.rb, or router, receives the request
+- router matches request to route with the verb and url (get '/spacecats')
+- the code in the block for get '/spacecats' is carried out:
+  - @spacecats = Spacecat.all
+    - All the spacecats are retrieved from the database.
+    - The spacecats are returned and bound to the variable @spacecats.
+  - The variable @spacecats is passed to the corresponding view (since I wrote haml :all, views/all.haml is the view it uses).
+- the view, with @spacecats, is returned to the user and his/her browser, where it is rendered in HTML.
+
+SQL
+
+1. Create a database called wizards. The rest of the assesment all will take place in the wizards db.
+(Obviously... see other answers. heh)
+
+3. Write a statement to count the number of rows in the wizards table. How many wizards are there?
+The answer was 0.
+
+5. Write a statement to count the number of rows in the wizards table. How many wizards are there now?
+The answer was 1.
+
+11. Create two data models for wizards. The wizards are going to have a name, an age and two powers each. Let's pretend we're in a world where wizards have many powers, but powers belong to one wizard (two wizards cant have the same power) Each power is going to have a name and a damage amount. Write out the sql to create the two schemas and some sample records. What are the costs/benefits of the two approaches? If you only see one way of doing this that's ok. Please explain any potential problems with your approach. What questions can this schema answer easily? What questions can this schema not answer easily?
+
+See both my schemas in question_11.sql; the first had a wizards table and a powers table, and each power had a wizard_id.
+The second schema had only a wizards table, with columns for power1_name, power2_name, power1_damage and power2_damage.
+(I assume that depending on the database syntax you could also have power_names and power_damages with comma-delimited values, which would be a terrible idea.)
+The first is by far a better schema, as lookup is faster, and it is much easier to retrieve all wizards with a certain power. It's also much easier and neater if you later want to add more attributes to powers or order powers in a certain way.
+
+19. What's the difference between an outer and inner join?
+An outer join returns all entries regardless of the attribute on which the tables are joined, while an inner join returns only the rows that have matching values (for which there is a join). 
+For example, in the example where wizards can have many powers but two wizards can't have the same power, I join the tables on wizard_id. If a wizard has no powers, the entry/row for that wizard won't show up on an inner join table, but will on an outer join table.
+
+20. If I just write JOIN, is that an inner or outer join?
+Inner.
+
+21. When would I want to use an outer join?
+If I wanted to see all the records AND all the relationships between the records. For instance, maybe I want to see all the wizards with their powers, even the ones without powers.
+
+SORRY IF THIS WENT TERRIBLY WRONG. I WAS TRYING REALLY HARD NOT TO LOOK THINGS UP. I did forget what REST stood for.

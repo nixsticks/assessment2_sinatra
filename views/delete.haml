@@ -1,6 +1,6 @@
 %h1 Deport SpaceCat Back To #{@spacecat.home_planet}?
 %form{action: "/spacecats/#{@spacecat.id}", method: "post"}
   %input{type: "hidden", name: "_method", value: "delete"}
-  %input{type: "submit", class: "btn btn-lg btn-default", data: {confirm: "Are you sure?"}, value: "Yes"}
+  %input{type: "submit", class: "btn btn-default", data: {confirm: "Are you sure?"}, value: "Yes"}
 %br
-%a{class: "btn btn-lg btn-default", href: "/spacecats"} I changed my mind
+%a{class: "btn btn-default", href: "/spacecats/#{@spacecat.id}"} I changed my mind

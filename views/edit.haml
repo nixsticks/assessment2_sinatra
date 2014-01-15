@@ -3,3 +3,5 @@
   = partial :_form
   %input{type: "hidden", name: "_method", value: "put"}
   %input{class: "btn btn-default", type: "submit", value: "Update SpaceCat"}
+%h3
+  %a{href: "/spacecats/#{@spacecat.id}"} Back

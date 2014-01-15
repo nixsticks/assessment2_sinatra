@@ -1,0 +1,13 @@
+Now, answer these questions:
+
+1. What is Sinatra? Where does it run?
+
+2. What is a Gemfile? How do you use it in your Sinatra Application? Give step by step instructions.
+
+3. What is an ORM? What are the basic features of an ORM? Why is it helpful?
+
+4. What is the public folder? What do we use it for?
+
+5. What is REST? Why is it useful?
+
+6. Suppose I, with my browser, send an HTTP get request to the route that will render the view of all the SpaceCats. Walk me through step by step how your application handles that request.

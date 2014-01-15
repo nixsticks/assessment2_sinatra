@@ -1,0 +1,1 @@
+INSERT INTO wizards (name, age) VALUES ("Blake", 30);

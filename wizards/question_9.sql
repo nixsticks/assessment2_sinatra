@@ -1,0 +1,1 @@
+DELETE FROM wizards WHERE id=2;

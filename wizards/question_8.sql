@@ -1,0 +1,1 @@
+UPDATE wizards SET age=40;

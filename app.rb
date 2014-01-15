@@ -23,7 +23,7 @@ module SpaceCats
     post '/spacecats' do
       @spacecat = SpaceCat.new(params[:spacecat])
       if @spacecat.save
-        redirect_to "/spacecats/#{@spacecat.id}"
+        redirect "/spacecats/#{@spacecat.id}"
       else
         @message = "SpaceCat could not be saved."
         haml :error
@@ -35,6 +35,21 @@ module SpaceCats
       haml :show
     end
 
+    get '/spacecats/edit/:id' do
+      @spacecat = SpaceCat.find(params[:id])
+      haml :edit
+    end
+
+    put '/spacecats/:id' do
+      @spacecat = SpaceCat.find(params[:id])
+      if @spacecat.update(params[:spacecat])
+        redirect "/spacecats/#{@spacecat.id}"
+      else
+        @message = "SpaceCat could not be saved."
+        haml :error
+      end
+    end
+
     get '/spacecats/delete/:id' do
       @spacecat = SpaceCat.find(params[:id])
       haml :delete
@@ -42,12 +57,12 @@ module SpaceCats
 
     delete '/spacecats/:id' do
       SpaceCat.find(params[:id]).destroy
-      redirect_to '/spacecats'
+      redirect '/spacecats'
     end
 
     helpers do
       def partial(partial)
-        haml :partial
+        haml partial
       end
     end
   end

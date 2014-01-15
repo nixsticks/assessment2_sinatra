@@ -1,1 +1,12 @@
 %h1= @spacecat.name
+%img{src: 'http://placekitten.com/200/200'}
+%p
+  %a{href: "/spacecats/edit/#{@spacecat.id}"} Edit
+  |
+  %a{href: "/spacecats/delete/#{@spacecat.id}"} Delete
+%h3 Home Planet:
+%p= @spacecat.home_planet
+%h3 Tagline:
+%p= @spacecat.tagline
+%h3 Superpower:
+%p= @spacecat.superpower

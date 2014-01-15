@@ -1,0 +1,5 @@
+%h1 Edit #{@spacecat.name}
+%form{action: "/spacecats/#{@spacecat.id}", method: "post"}
+  = partial :_form
+  %input{type: "hidden", name: "_method", value: "put"}
+  %input{class: "btn btn-default", type: "submit", value: "Update SpaceCat"}

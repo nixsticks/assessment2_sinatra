@@ -1,11 +1,16 @@
-%label Name:
-%input#name{type: "text", name: "spacecat[name]", value: "#{@spacecat.name}"}
-
-%label Home Planet:
-%input#home-planet{type: "text", name: "spacecat[home_planet]", value: "#{@spacecat.home_planet}"}
-
-%label Tagline:
-%input#tagline{type: "text", name: "spacecat[tagline]", value: "#{@spacecat.tagline}"}
-
-%label Superpower:
-%input#superpower{type: "text", name: "spacecat[superpower]", value: "#{@spacecat.superpower}"}
+.form-group
+  %label Name:
+  %br
+  %input#name{type: "text", name: "spacecat[name]", value: "#{@spacecat.name}"}
+.form-group
+  %label Home Planet:
+  %br
+  %input#home-planet{type: "text", name: "spacecat[home_planet]", value: "#{@spacecat.home_planet}"}
+.form-group
+  %label Tagline:
+  %br
+  %input#tagline{type: "text", name: "spacecat[tagline]", value: "#{@spacecat.tagline}"}
+.form-group
+  %label Superpower:
+  %br
+  %input#superpower{type: "text", name: "spacecat[superpower]", value: "#{@spacecat.superpower}"}

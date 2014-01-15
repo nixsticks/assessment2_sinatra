@@ -1,1 +1,6 @@
 %h1 All SpaceCats
+- @spacecats.each do |spacecat|
+  %h3 
+    %a{href: "/spacecats/#{spacecat.id}"} #{spacecat.name} of #{spacecat.home_planet}
+  %p "#{spacecat.tagline}"
+  %p Superpower: #{spacecat.superpower}

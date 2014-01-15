@@ -1,1 +1,1 @@
-DELETE FROM wizards WHERE id=2;
+DELETE FROM wizards WHERE id = (SELECT MAX(id) FROM wizards);

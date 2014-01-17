@@ -1,1 +1,1 @@
-INSERT INTO wizards (name, age) VALUES ("Blake", 30);
+SELECT COUNT(*) FROM wizards;
